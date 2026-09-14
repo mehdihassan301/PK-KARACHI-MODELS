@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react';
-import { LOGO_URL } from '../data';
 import { Send, CheckCircle2 } from 'lucide-react';
 
 export default function Footer() {

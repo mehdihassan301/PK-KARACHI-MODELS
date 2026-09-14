@@ -1,6 +1,6 @@
 import { X, MessageSquare, Sparkles } from 'lucide-react';
 import { ServiceItem } from '../types';
-import { WHATSAPP_URL } from '../data';
+import { WHATSAPP_URL, handleImageFallback } from '../data';
 
 interface Props {
   item: ServiceItem;
@@ -35,6 +35,7 @@ export default function PhotoLightbox({ item, onClose }: Props) {
             src={item.image}
             alt={item.alt}
             className="w-full h-full object-contain max-h-[55vh]"
+            onError={handleImageFallback}
           />
           <div className="absolute top-3 left-3">
             <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 bg-[#b91c1c] text-white shadow">

@@ -1,36 +1,93 @@
+import type { SyntheticEvent } from 'react';
 import { ServiceItem, PricingRow, AreaItem, StepItem, FaqItem } from './types';
 
 export const CONTACT_PHONE = "+92 328 7377799";
 export const CONTACT_PHONE_CLEAN = "923287377799";
 export const WHATSAPP_URL = `https://wa.me/${CONTACT_PHONE_CLEAN}`;
 
-export const LOGO_URL = "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts-logo.png";
-export const HERO_IMG = "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts.png";
-export const ABOUT_BG_URL = "https://pkkarachimodels.com/wp-content/uploads/2026/08/BG2.png";
-export const ABOUT_IMG_1 = "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts-2.png";
-export const ABOUT_IMG_2 = "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts-1-1.png";
+// Subfolders under /public containing the uploaded photos
+export const PHOTOS_DIR = "/photos";
+export const IMAGES_DIR = "/images";
+
+// Exact filenames as uploaded into public/photos and public/images
+export const UPLOADED_FILENAMES = {
+  photo1: "WhatsApp Image 2026-09-13 at 4.45.29 PM.jpeg",      // Model in brown dress
+  photo2: "WhatsApp Image 2026-09-13 at 4.45.26 PM (2).jpeg",  // Model in striped turtleneck
+  photo3: "WhatsApp Image 2026-09-13 at 4.45.26 PM (1).jpeg",  // Model in white kurti & jeans
+  photo4: "WhatsApp Image 2026-09-13 at 4.45.26 PM.jpeg",      // Model in black outfit with bag
+  photo5: "WhatsApp Image 2026-09-13 at 4.45.25 PM (1).jpeg",  // Model in off-shoulder top & denim
+  photo6: "WhatsApp Image 2026-09-13 at 4.45.25 PM.jpeg",      // Model in maroon suit
+};
+
+// Clean web-safe URLs for the photos subfolder
+export const UPLOADED_PHOTOS = {
+  photo1: `${PHOTOS_DIR}/${encodeURI(UPLOADED_FILENAMES.photo1)}`,
+  photo2: `${PHOTOS_DIR}/${encodeURI(UPLOADED_FILENAMES.photo2)}`,
+  photo3: `${PHOTOS_DIR}/${encodeURI(UPLOADED_FILENAMES.photo3)}`,
+  photo4: `${PHOTOS_DIR}/${encodeURI(UPLOADED_FILENAMES.photo4)}`,
+  photo5: `${PHOTOS_DIR}/${encodeURI(UPLOADED_FILENAMES.photo5)}`,
+  photo6: `${PHOTOS_DIR}/${encodeURI(UPLOADED_FILENAMES.photo6)}`,
+};
+
+// Clean web-safe URLs for the images subfolder
+export const UPLOADED_IMAGES = {
+  photo1: `${IMAGES_DIR}/${encodeURI(UPLOADED_FILENAMES.photo1)}`,
+  photo2: `${IMAGES_DIR}/${encodeURI(UPLOADED_FILENAMES.photo2)}`,
+  photo3: `${IMAGES_DIR}/${encodeURI(UPLOADED_FILENAMES.photo3)}`,
+  photo4: `${IMAGES_DIR}/${encodeURI(UPLOADED_FILENAMES.photo4)}`,
+  photo5: `${IMAGES_DIR}/${encodeURI(UPLOADED_FILENAMES.photo5)}`,
+  photo6: `${IMAGES_DIR}/${encodeURI(UPLOADED_FILENAMES.photo6)}`,
+};
+
+export const MODEL_PHOTOS = [
+  UPLOADED_PHOTOS.photo1,
+  UPLOADED_PHOTOS.photo2,
+  UPLOADED_PHOTOS.photo3,
+  UPLOADED_PHOTOS.photo4,
+  UPLOADED_PHOTOS.photo5,
+  UPLOADED_PHOTOS.photo6,
+];
+
+export const HERO_IMG = UPLOADED_PHOTOS.photo2;
+export const ABOUT_IMG_1 = UPLOADED_PHOTOS.photo1;
+export const ABOUT_IMG_2 = UPLOADED_PHOTOS.photo4;
+
+/**
+ * Image fallback helper: If an image fails from /photos/, it tries /images/ (and vice versa)
+ */
+export function handleImageFallback(e: SyntheticEvent<HTMLImageElement, Event>) {
+  const target = e.currentTarget;
+  if (!target.dataset.triedFallback) {
+    target.dataset.triedFallback = 'true';
+    if (target.src.includes('/photos/')) {
+      target.src = target.src.replace('/photos/', '/images/');
+    } else if (target.src.includes('/images/')) {
+      target.src = target.src.replace('/images/', '/photos/');
+    }
+  }
+}
 
 export const SERVICES_LIST: ServiceItem[] = [
   {
     id: "vip-luxury",
     title: "VIP & Luxury Escorts",
-    image: "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts-8.png",
-    alt: "karachi call girls",
+    image: UPLOADED_PHOTOS.photo4,
+    alt: "karachi call girls vip luxury",
     tag: "High Profile",
     description: "Sophisticated, cultured, and charming top-tier companions for luxury engagements, fine dinners, and premier hotel appointments."
   },
   {
     id: "independent-call-girls",
     title: "Independent Call Girls",
-    image: "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts-6.png",
-    alt: "karachi escorts",
+    image: UPLOADED_PHOTOS.photo2,
+    alt: "karachi independent escorts",
     tag: "Independent",
     description: "Direct, genuine, screened independent companions offering warm chemistry, personalized attention, and relaxed companionship."
   },
   {
     id: "vip-karachi-escorts",
     title: "VIP Karachi Escorts",
-    image: "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts-4.png",
+    image: UPLOADED_PHOTOS.photo1,
     alt: "vip escorts in karachi",
     tag: "Exclusive",
     description: "Elite models and pageant-level companions with exquisite etiquette, punctuality, and complete discretion."
@@ -38,15 +95,15 @@ export const SERVICES_LIST: ServiceItem[] = [
   {
     id: "gfe-companionship",
     title: "GFE-Style Companionship",
-    image: "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts-1-1.png",
-    alt: "karachi escort",
+    image: UPLOADED_PHOTOS.photo3,
+    alt: "karachi escort gfe companionship",
     tag: "Intimate & Caring",
     description: "Sweet, attentive, and affectionate girlfriend-experience companion services creating memorable and comfortable moments."
   },
   {
     id: "hotel-outcall",
     title: "Hotel & Outcall Servic",
-    image: "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts-10.png",
+    image: UPLOADED_PHOTOS.photo6,
     alt: "hotel outcall service in karachi",
     tag: "24/7 Outcall",
     description: "Swift, safe, and discreet visits directly to major luxury hotels, business suites, and private upscale residences."
@@ -54,7 +111,7 @@ export const SERVICES_LIST: ServiceItem[] = [
   {
     id: "short-time-hourly",
     title: "Short-Time / Hourly Bookings",
-    image: "https://pkkarachimodels.com/wp-content/uploads/2026/08/karachi-escorts-9.png",
+    image: UPLOADED_PHOTOS.photo5,
     alt: "short time hourly escorts karachi",
     tag: "Flexible",
     description: "Flexible schedules tailored around your availability, from single hours to extended multi-hour and overnight packages."

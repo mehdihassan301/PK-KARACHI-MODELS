@@ -1,5 +1,5 @@
 import { MessageSquare, ShieldCheck } from 'lucide-react';
-import { ABOUT_BG_URL, ABOUT_IMG_1, ABOUT_IMG_2, WHATSAPP_URL } from '../data';
+import { ABOUT_IMG_1, ABOUT_IMG_2, WHATSAPP_URL, handleImageFallback } from '../data';
 
 export default function AboutServiceSection() {
   return (
@@ -49,24 +49,17 @@ export default function AboutServiceSection() {
             </div>
           </div>
 
-          {/* Right Column: Layered Photo Cards */}
-          <div className="lg:col-span-6 relative flex justify-center items-center">
-            {/* Background Graphic */}
-            <div className="relative w-full max-w-[480px] sm:max-w-[540px]">
-              <img
-                src={ABOUT_BG_URL}
-                alt="Karachi Models Pattern"
-                className="w-full h-auto opacity-25 object-contain mx-auto"
-                loading="lazy"
-              />
-
+          {/* Right Column: Layered Photo Cards using only uploaded photos */}
+          <div className="lg:col-span-6 relative flex justify-center items-center py-6 sm:py-10">
+            <div className="relative w-full max-w-[480px] sm:max-w-[540px] h-[360px] sm:h-[440px]">
               {/* Photo 1 - Left card */}
-              <div className="absolute top-4 left-0 sm:left-4 w-44 sm:w-56 overflow-hidden shadow-lg border border-gray-200 bg-white transform -rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="absolute top-0 left-2 sm:left-4 w-48 sm:w-60 overflow-hidden shadow-xl border-2 border-white bg-white transform -rotate-3 hover:rotate-0 transition-transform duration-500 z-10">
                 <img
                   src={ABOUT_IMG_1}
-                  alt="escorts in karachi"
+                  alt="verified escorts in karachi"
                   className="w-full h-64 sm:h-80 object-cover"
                   loading="lazy"
+                  onError={handleImageFallback}
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 text-white">
                   <span className="text-[10px] font-bold uppercase tracking-widest bg-[#b91c1c] px-2 py-0.5">Verified Profile</span>
@@ -75,12 +68,13 @@ export default function AboutServiceSection() {
               </div>
 
               {/* Photo 2 - Right card */}
-              <div className="absolute -bottom-6 right-0 sm:right-4 w-48 sm:w-60 overflow-hidden shadow-lg border border-gray-200 bg-white transform rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="absolute bottom-0 right-2 sm:right-4 w-52 sm:w-64 overflow-hidden shadow-2xl border-2 border-white bg-white transform rotate-3 hover:rotate-0 transition-transform duration-500 z-20">
                 <img
                   src={ABOUT_IMG_2}
-                  alt="karachi escort"
-                  className="w-full h-68 sm:h-84 object-cover"
+                  alt="karachi escort companion"
+                  className="w-full h-72 sm:h-92 object-cover"
                   loading="lazy"
+                  onError={handleImageFallback}
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 text-white">
                   <span className="text-[10px] font-bold uppercase tracking-widest bg-[#b91c1c] px-2 py-0.5">Active 24/7</span>

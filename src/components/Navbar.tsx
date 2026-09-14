@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone, MessageSquare } from 'lucide-react';
-import { LOGO_URL, WHATSAPP_URL, CONTACT_PHONE } from '../data';
+import { WHATSAPP_URL, CONTACT_PHONE } from '../data';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);

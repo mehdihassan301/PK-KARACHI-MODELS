@@ -1,5 +1,5 @@
 import { MessageSquare } from 'lucide-react';
-import { HERO_IMG, WHATSAPP_URL } from '../data';
+import { HERO_IMG, WHATSAPP_URL, handleImageFallback } from '../data';
 
 export default function HeroSection() {
   return (
@@ -76,18 +76,20 @@ export default function HeroSection() {
 
         {/* Right Hero Image */}
         <div id="hero-image-container" className="w-full lg:w-auto flex justify-center order-first lg:order-last">
-          <div className="relative group max-w-[360px] sm:max-w-[440px]">
-            <img
-              src={HERO_IMG}
-              alt="Karachi Escorts - Premium VIP Call Girls"
-              width="800"
-              height="600"
-              className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-              style={{
-                filter: 'drop-shadow(0 20px 30px rgba(0, 0, 0, 0.12))',
-              }}
-              loading="eager"
-            />
+          <div className="relative group max-w-[340px] sm:max-w-[420px] w-full">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl border-4 border-white bg-gray-900">
+              <img
+                src={HERO_IMG}
+                alt="Karachi Escorts - Premium VIP Call Girls"
+                className="w-full h-[400px] sm:h-[480px] object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
+                onError={handleImageFallback}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none flex flex-col justify-end p-5">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-red-400">Karachi VIP Model</span>
+                <p className="text-white font-black text-sm uppercase tracking-wide">Available 24/7 For Outcall</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

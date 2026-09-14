@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Eye, MessageSquare, Sparkles } from 'lucide-react';
-import { SERVICES_LIST, WHATSAPP_URL } from '../data';
+import { SERVICES_LIST, WHATSAPP_URL, handleImageFallback } from '../data';
 import { ServiceItem } from '../types';
 import PhotoLightbox from './PhotoLightbox';
 
@@ -45,6 +45,7 @@ export default function ServicesPhotoGrid() {
                   alt={item.alt}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
+                  onError={handleImageFallback}
                 />
 
                 {/* Tag Badge */}
