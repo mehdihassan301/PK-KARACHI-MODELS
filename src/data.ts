@@ -1,8 +1,8 @@
 import type { SyntheticEvent } from 'react';
 import { ServiceItem, PricingRow, AreaItem, StepItem, FaqItem } from './types';
 
-export const CONTACT_PHONE = "+92 328 7377799";
-export const CONTACT_PHONE_CLEAN = "923287377799";
+export const CONTACT_PHONE = "+92 3092124290";
+export const CONTACT_PHONE_CLEAN = "923092124290";
 export const WHATSAPP_URL = `https://wa.me/${CONTACT_PHONE_CLEAN}`;
 
 // Subfolders under /public containing the uploaded photos
